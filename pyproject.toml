@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "pyautolab-OptoSigma"
+version = "0.1.0"
+description = "A plugin for pyAutoLab to control OptoSigma's instruments"
+authors = ["5yutan5 <63651161+5yutan5@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/pyautolab/pyautolab-optosigma"
+homepage = "https://github.com/pyautolab/pyautolab-optosigma"
+packages = [{ include = "pyautolab_OptoSigma" }]
+
+keywords = ["pyautolab", "qt"]
+
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.11"
+
+[tool.poetry.dev-dependencies]
+black = "^21.11b1"
+flake8 = "^4.0.1"
+flake8-return = "^1.1.3"
+flake8-print = "^4.0.0"
+flake8-docstrings = "^1.6.0"
+pyproject-flake8 = "^0.0.1-alpha.2"
+isort = "^5.10.1"
+pre-commit = "^2.15.0"
+pytest = "^6.2.5"
+pytest-cov = { version = "^3.0.0", extras = ["toml"] }
+pytest-xvfb = "^2.0.0"
+bandit = "^1.7.1"
+pyupgrade = "^2.29.1"
+flake8-simplify = "^0.14.2"
+pyinstaller = "^4.7"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."pyinstaller40"]
+hook-dirs = "pyautolab_OptoSigma.__pyinstaller:get_hook_dirs"
+
+[tool.flake8]
+max-line-length = 119
+max-complexity = 10
+docstring-convention = "google"
+per-file-ignores = ["**/__init__.py:F401"]
+
+[tool.black]
+line-length = 119
+
+[tool.isort]
+profile = "black"
+line_length = 119
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+]

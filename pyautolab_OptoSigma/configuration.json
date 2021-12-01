@@ -1,0 +1,57 @@
+{
+    "name": "OptoSigma(stage controller)",
+    "configuration": {
+        "shot702.accelerationAndDecelerationTime": {
+            "description": "Time of acceleration and deceleration [msec].",
+            "type": "integer",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 1000
+        },
+        "shot702.judgeReadyInterval": {
+            "description": "Judgment interval of stage controller preparation [msec].",
+            "type": "integer",
+            "default": 50,
+            "minimum": 0,
+            "maximum": 100
+        },
+        "shot702.minimumSpeed": {
+            "description": "Minimum move speed [μm/sec].",
+            "type": "integer",
+            "default": 500,
+            "minimum": 1,
+            "maximum": 50000
+        },
+        "hsc103.accelerationAndDecelerationTime": {
+            "description": "Time of acceleration and deceleration [msec].",
+            "type": "integer",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 1000
+        },
+        "hsc103.judgeReadyInterval": {
+            "description": "Judgment interval of stage controller preparation [msec].",
+            "type": "integer",
+            "default": 50,
+            "minimum": 0,
+            "maximum": 100
+        },
+        "hsc103.minimumSpeed": {
+            "description": "Minimum move speed [μm/sec].",
+            "type": "integer",
+            "default": 500,
+            "minimum": 1,
+            "maximum": 50000
+        }
+    },
+    "device": {
+        "Shot702(stage controller)": {
+            "class": "pyautolab_OptoSigma.shot702.driver:Shot702",
+            "tabClass": "pyautolab_OptoSigma.shot702.tab:TabShot702"
+        },
+        "Hsc103(stage controller)": {
+            "class": "pyautolab_OptoSigma.hsc103.driver:Hsc103",
+            "tabClass": "pyautolab_OptoSigma.hsc103.tab:TabHsc103"
+        }
+    }
+}
