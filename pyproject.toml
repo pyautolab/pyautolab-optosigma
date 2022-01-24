@@ -40,7 +40,7 @@ pytest-cov = { version = "^3.0.0", extras = ["toml"] }
 pytest-xvfb = "^2.0.0"
 bandit = "^1.7.1"
 pyupgrade = "^2.29.1"
-flake8-simplify = "^0.14.2"
+flake8-simplify = "^0.15.1"
 pyinstaller = "^4.7"
 
 [build-system]
