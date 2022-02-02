@@ -1,11 +1,11 @@
 from __future__ import annotations
 
+from pyautolab import api
+
 from pyautolab_OptoSigma.helper.driver import PARAMETER
 from pyautolab_OptoSigma.helper.tab import Cycle, Step, TabUI
 from pyautolab_OptoSigma.hsc103.driver import Hsc103
 from pyautolab_OptoSigma.widget import StageControlManager
-
-from pyautolab import api
 
 
 class TabHsc103(api.DeviceTab):

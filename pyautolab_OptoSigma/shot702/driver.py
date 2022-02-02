@@ -4,9 +4,10 @@ import re
 from math import floor
 from typing import Any
 
-from pyautolab_OptoSigma.helper.driver import OSMS26, SGSP26, Stage, StageController
 from serial.serialutil import EIGHTBITS, PARITY_NONE, STOPBITS_ONE
 from typing_extensions import Literal
+
+from pyautolab_OptoSigma.helper.driver import OSMS26, SGSP26, Stage, StageController
 
 
 class Shot702(StageController):

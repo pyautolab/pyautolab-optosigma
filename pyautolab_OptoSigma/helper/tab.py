@@ -1,9 +1,9 @@
 import qtawesome as qta
-from pyautolab_OptoSigma.helper.driver import StageController
-from PySide6.QtCore import Qt, Slot
-from PySide6.QtWidgets import QButtonGroup, QFormLayout, QGridLayout, QGroupBox, QSpinBox, QWidget
-
 from pyautolab import api
+from qtpy.QtCore import Qt, Slot
+from qtpy.QtWidgets import QButtonGroup, QFormLayout, QGridLayout, QGroupBox, QSpinBox, QWidget
+
+from pyautolab_OptoSigma.helper.driver import StageController
 
 
 class TabUI:

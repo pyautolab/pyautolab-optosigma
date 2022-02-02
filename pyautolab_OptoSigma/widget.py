@@ -1,10 +1,10 @@
 import qtawesome as qta
-from pyautolab_OptoSigma.helper.driver import StageController
-from PySide6.QtCore import QSize, Qt, Slot
-from PySide6.QtWidgets import QGridLayout, QGroupBox, QLabel, QSizePolicy, QVBoxLayout
+from pyautolab import api
+from qtpy.QtCore import QSize, Qt, Slot  # type: ignore
+from qtpy.QtWidgets import QGridLayout, QGroupBox, QLabel, QSizePolicy, QVBoxLayout
 from serial.serialutil import SerialException
 
-from pyautolab import api
+from pyautolab_OptoSigma.helper.driver import StageController
 
 
 class StageControlManager(api.widgets.Manager):

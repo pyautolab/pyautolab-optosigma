@@ -2,17 +2,47 @@
     "python.testing.pytestArgs": [
         "tests"
     ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.pytest_cache": true,
+        "**/__pycache__": true,
+        "**/.coverage": true,
+        "**/coverage.xml": true
+    },
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "python.linting.flake8Path": "pflake8",
-    "python.linting.banditEnabled": true,
     "python.linting.flake8Enabled": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "black",
     "cSpell.words": [
+        "absolufy",
+        "APPDATA",
+        "backticks",
+        "datas",
         "isort",
+        "linebreak",
+        "Opto",
+        "optosigma",
+        "OSMS",
         "pflake",
+        "pyautolab",
         "pyproject",
-        "pyupgrade"
-    ],
+        "pyright",
+        "pytest",
+        "pyupgrade",
+        "qtawesome",
+        "qtpy",
+        "rtscts",
+        "serialutil",
+        "SGSP",
+        "venv",
+        "virtualenvs",
+        "yesqa"
+    ]
 }

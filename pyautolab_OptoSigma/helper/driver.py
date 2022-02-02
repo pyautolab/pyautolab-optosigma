@@ -3,10 +3,9 @@ from __future__ import annotations
 from abc import abstractmethod
 from dataclasses import dataclass
 
+from pyautolab import api
 from serial import Serial
 from typing_extensions import Final, Literal
-
-from pyautolab import api
 
 PARAMETER = {"Displacement": "μm"}
 
@@ -32,7 +31,6 @@ class Stage:
     name: str
     # μm/pulse
     resolution_full: int
-    # x_micro_per_pulse_full: int
     # mm/sec
     max_speed: int
 
