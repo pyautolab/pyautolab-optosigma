@@ -10,7 +10,7 @@ from pyautolab_OptoSigma.widget import StageControlManager
 
 class TabShot702(api.DeviceTab):
     def __init__(self, device: Shot702) -> None:
-        super().__init__()
+        super().__init__(device)
         self._ui = TabUI()
         self._ui.setup_ui(self)
         self.device = device

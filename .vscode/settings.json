@@ -16,7 +16,7 @@
     },
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
-    "python.linting.flake8Path": "pflake8",
+    "python.linting.flake8Path": "${workspaceFolder}/.venv/bin/pflake8",
     "python.linting.flake8Enabled": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "black",
