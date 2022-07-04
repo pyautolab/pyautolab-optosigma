@@ -120,6 +120,7 @@ class Cycle(api.Controller):
             self._count += 1
             if self._cycle_num <= self._count - 2:
                 self.stop()
+                print(self._count / 2)
                 return
             api.qt_helpers.sleep_nonblock_window(self._stop_time)
 
