@@ -30,6 +30,7 @@ class Shot702(StageController):
         self._ser.parity = PARITY_NONE
         self._ser.rtscts = True
         self._ser.open()
+        self.initialize("OSMS26")
 
     def close(self) -> None:
         """Disconnect stage controller(Shot702)."""
@@ -108,7 +109,7 @@ class Shot702(StageController):
             Data format is [first axis, second axis]
         """
         positions = self._get_status()[:2]  # unit is [pulse]
-        return [round(int(position) * self._resolution, 2) for position in positions]
+        return [round(int(position.replace(" ", "")) * self._resolution, 2) for position in positions]
 
     def is_ready(self) -> list[bool]:
         """Check whether the controller is ready for operation or not.
@@ -213,7 +214,7 @@ class Shot702(StageController):
             When only the first axis, return "1". When only the second axis, return "2".
             When double axis, return "W".
         """
-        return "W" if all(axis_data) else ("1" if axis_data[0] else "2")
+        return "W" if all(axis_data) else ("1" if axis_data[0] is not None else "2")
 
     def move_stages(
         self,
@@ -233,7 +234,7 @@ class Shot702(StageController):
         """
         axis = self._get_axis_option(displacements[:2])
         command = f"{mode}:{axis}"
-        for displacement in displacements:
+        for displacement in displacements[:2]:
             if displacement is None:
                 continue
             direction = "-" if displacement < 0 else "+"

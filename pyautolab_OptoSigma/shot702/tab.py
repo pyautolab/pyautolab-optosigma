@@ -26,14 +26,14 @@ class TabShot702(api.DeviceTab):
             axis=1, min=speed, max=speed, acceleration_time=acceleration_time, original_reset_speed=None
         )
 
-    def get_controller(self) -> tuple | None:
+    def get_controller(self) -> api.Controller | None:
         stop_time = self._ui.spinbox_stop_interval.value()
         operation_num = self._ui.spinbox_operation_num.value()
         distance = self._ui.spinbox_distance.value()
         judge_ready_interval = int(api.get_setting("shot702.judgeReadyInterval"))
 
-        class_type = Cycle if self._ui.p_btn_cycle_mode.isChecked() else Step
-        return (class_type, "Shot702(stage controller)", stop_time, operation_num, distance, judge_ready_interval)
+        controller_type = Cycle if self._ui.p_btn_cycle_mode.isChecked() else Step
+        return controller_type(self.device, stop_time, operation_num, distance, judge_ready_interval)
 
     def get_parameters(self) -> dict[str, str]:
         return PARAMETER

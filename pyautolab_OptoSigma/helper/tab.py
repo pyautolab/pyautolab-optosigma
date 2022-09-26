@@ -116,11 +116,10 @@ class Cycle(api.Controller):
         # TODO: When implement thread, remove timer
         if self._device.is_ready()[0]:
             move_position = self._distance if self._count % 2 else 0
-            self._device.move_stages((move_position, None, None), "A")
+            self._device.move_stages((move_position, None, None))
             self._count += 1
             if self._cycle_num <= self._count - 2:
                 self.stop()
-                print(self._count / 2)
                 return
             api.qt_helpers.sleep_nonblock_window(self._stop_time)
 
