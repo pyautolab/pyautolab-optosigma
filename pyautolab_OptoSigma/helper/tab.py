@@ -34,7 +34,7 @@ class TabUI:
         self.spinbox_distance.setRange(-100000, 300000)
         self.spinbox_operation_num.setRange(1, 100000)
         self.slider_speed.range = 1, 50000
-        self.spinbox_stop_interval.setRange(0, 10000)
+        self.spinbox_stop_interval.setRange(0, 100_000_000)
         self.spinbox_operation_num.setValue(100)
         self.slider_speed.update_current_value(5000)
 
