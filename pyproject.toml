@@ -41,7 +41,7 @@ flake8-pytest-style = "^1.6.0"
 
 # pytest
 pytest = "^6.2.5"
-pytest-cov = { version = "^3.0.0", extras = ["toml"] }
+pytest-cov = { version = "^4.0.0", extras = ["toml"] }
 pytest-xvfb = "^2.0.0"
 
 black = "^22.1"
