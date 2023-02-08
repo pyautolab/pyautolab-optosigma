@@ -1,7 +1,6 @@
-from __future__ import annotations
+from typing import Literal
 
 from serial.serialutil import EIGHTBITS, PARITY_NONE, STOPBITS_ONE
-from typing_extensions import Literal
 
 from pyautolab_OptoSigma.helper.driver import OSMS26, SGSP26, StageController
 

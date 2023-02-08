@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from pyautolab import api
 
 from pyautolab_OptoSigma.helper.driver import PARAMETER

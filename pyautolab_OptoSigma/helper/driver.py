@@ -1,11 +1,9 @@
-from __future__ import annotations
-
 from abc import abstractmethod
 from dataclasses import dataclass
 
 from pyautolab import api
 from serial import Serial
-from typing_extensions import Final, Literal
+from typing import Final, Literal
 
 PARAMETER = {"Displacement": "μm"}
 

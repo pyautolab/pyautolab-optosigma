@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from pyautolab import api
 
 from pyautolab_OptoSigma.helper.driver import PARAMETER
@@ -17,7 +15,7 @@ class TabHsc103(api.DeviceTab):
         self._setup_ui()
 
     def _setup_ui(self) -> None:
-        self._ui.p_btn_open_control_manager.pressed.connect(self._open_control_manager)
+        self._ui.p_btn_open_control_manager.pressed.connect(self._open_control_manager)  # type: ignore
 
     def setup_settings(self):
         speed = self._ui.slider_speed.current_value

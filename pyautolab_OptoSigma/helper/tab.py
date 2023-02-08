@@ -1,6 +1,6 @@
 import qtawesome as qta
 from pyautolab import api
-from qtpy.QtCore import Qt, Slot
+from qtpy.QtCore import Qt, Slot  # type: ignore
 from qtpy.QtWidgets import QButtonGroup, QFormLayout, QGridLayout, QGroupBox, QSpinBox, QWidget
 
 from pyautolab_OptoSigma.helper.driver import StageController
@@ -9,9 +9,9 @@ from pyautolab_OptoSigma.helper.driver import StageController
 class TabUI:
     def setup_ui(self, parent: QWidget) -> None:
         # member
-        self.p_btn_step_mode = api.qt_helpers.create_push_button(fixed_width=250, text="Step Mode")
-        self.p_btn_cycle_mode = api.qt_helpers.create_push_button(fixed_width=250, text="Cycle Mode")
-        self.p_btn_open_control_manager = api.qt_helpers.create_push_button(
+        self.p_btn_step_mode = api.qt.push_button(fixed_width=250, text="Step Mode")
+        self.p_btn_cycle_mode = api.qt.push_button(fixed_width=250, text="Cycle Mode")
+        self.p_btn_open_control_manager = api.qt.push_button(
             fixed_width=40, fixed_height=40, icon=qta.icon("fa.arrows")
         )
         self.spinbox_distance = QSpinBox()
@@ -39,16 +39,15 @@ class TabUI:
         self.slider_speed.update_current_value(5000)
 
         # Setup layout
-        h_layout_mode = api.qt_helpers.create_h_box_layout(
-            [self.p_btn_step_mode, self.p_btn_cycle_mode, self.p_btn_open_control_manager]
+        api.qt.layout(
+            [self.p_btn_step_mode, self.p_btn_cycle_mode, self.p_btn_open_control_manager], parent=self._group_mode
         )
-        self._group_mode.setLayout(h_layout_mode)
 
         f_layout = QFormLayout()
-        f_layout.addRow("Displacement: ", api.qt_helpers.add_unit(self.spinbox_distance, "μm"))
+        f_layout.addRow("Displacement: ", api.qt.add_unit(self.spinbox_distance, "μm"))
         f_layout.addRow("Number of Operations: ", self.spinbox_operation_num)
-        f_layout.addRow("Speed: ", api.qt_helpers.add_unit(self.slider_speed, "μm/sec"))
-        f_layout.addRow("Stop Interval: ", api.qt_helpers.add_unit(self.spinbox_stop_interval, "msec"))
+        f_layout.addRow("Speed: ", api.qt.add_unit(self.slider_speed, "μm/sec"))
+        f_layout.addRow("Stop Interval: ", api.qt.add_unit(self.spinbox_stop_interval, "msec"))
 
         g_layout = QGridLayout(parent)
         g_layout.addWidget(self._group_mode, 0, 0)
@@ -70,7 +69,7 @@ class Step(api.Controller):
 
     def start(self) -> None:
         # TODO: When implement thread, remove timer.
-        self._timer_move_stage = api.qt_helpers.create_timer(
+        self._timer_move_stage = api.qt.timer(
             self, timeout=self._step, enable_count=True, timer_type=Qt.TimerType.PreciseTimer
         )
         self._device.fix_origin((True, False, False))
@@ -85,7 +84,7 @@ class Step(api.Controller):
             if self._step_num <= self._count:
                 self.stop()
                 return
-            api.qt_helpers.sleep_nonblock_window(self._stop_time)
+            api.qt.sleep_non_block_window(self._stop_time)
 
     def stop(self) -> None:
         self._timer_move_stage.stop()
@@ -106,7 +105,7 @@ class Cycle(api.Controller):
 
     def start(self) -> None:
         # TODO: When implement thread, remove timer.
-        self._timer_move_stage = api.qt_helpers.create_timer(
+        self._timer_move_stage = api.qt.timer(
             self, timeout=self._cycle, enable_count=True, timer_type=Qt.TimerType.PreciseTimer
         )
         self._device.fix_origin((True, False, False))
@@ -121,7 +120,7 @@ class Cycle(api.Controller):
             if self._cycle_num <= self._count - 2:
                 self.stop()
                 return
-            api.qt_helpers.sleep_nonblock_window(self._stop_time)
+            api.qt.sleep_non_block_window(self._stop_time)
 
     def stop(self) -> None:
         self._timer_move_stage.stop()
